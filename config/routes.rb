@@ -3,8 +3,11 @@ Socialnetwork::Application.routes.draw do
   root :to => "socialnetworks#index"
 
 
-   get 'usersearch' => 'socialnetworks#usersearch'
-    get "socialnetwork" => "socialnetworks#index"
+  get 'usersearch' => 'socialnetworks#usersearch'
+  get "socialnetwork" => "socialnetworks#index"
+  get 'friend' => 'friend#friendhome'
+  get 'friendadd' => 'friend#friendadd'
+  get 'frienddelete' => 'friend#frienddelete'
  
 
   # The priority is based upon order of creation: first created -> highest priority.
