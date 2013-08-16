@@ -4,4 +4,10 @@
 	<p>nichts gefunden </p>
 <% else %>
 	<%= render text: @user.first.firstname %> 
+	<%= render text: @user.first.lastname %> 
+	<p><%= link_to "Add Friend", friendadd_path(:friend_id=>@user.first.id) %></p>
 <% end %>
+
+					
+		
+		
