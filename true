@@ -1,0 +1,7 @@
+[1m[37m      invoke[0m  active_record
+[1m[32m      remove[0m    db/migrate/20130815133245_create_users.rb
+[1m[32m      create[0m    db/migrate/20130815133447_create_users.rb
+[1m[34m   identical[0m    app/models/user.rb
+[1m[37m      invoke[0m    test_unit
+[1m[34m   identical[0m      test/models/user_test.rb
+[1m[33m       force[0m      test/fixtures/users.yml

@@ -1,0 +1,36 @@
+// Place all the styles related to the socialnetworks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.header{
+	width: auto;
+	height: 100px;
+	background-color: #666666;
+}
+
+.content{
+	text-align: center;
+	float: left;
+	
+	background-color: #FFFFFF;
+
+}
+
+.navigationbar{
+	text-align: center;
+	width: 200px;
+	height: 500px;
+
+	float: right;
+	background-color: #666666;
+	a:link{color:#fff;}
+	a:visited{color:#fff;}
+	a:hover{color:#999999;}
+	a:active{color:yellow;}
+}
+
+.a_alert{
+	background-color: red;
+}

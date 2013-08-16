@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Socialnetwork</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+	<title>Socialnetwork</title>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= csrf_meta_tags %>
+
 </head>
 <body>
 
-<%= yield %>
+	<div class="header">
+
+		<%= form_tag("/usersearch", method: "get") do %>
+			<%= label_tag(:key, "search for:") %>
+			<%= text_field_tag(:key) %>
+			<%= submit_tag ("Search") %>
+		<% end %>
+	</div>
+
+	<div class="content">
+		
+		<%= yield %>
+	</div>
+
+	<div class="navigationbar">
+		<p class="notice a_alert"><%= notice %></p>
+		<p class="alert a_alert"><%= alert %></p>
+
+		<% if user_signed_in? %>
+
+		<p><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+		<p><%= link_to "Profil", destroy_user_session_path, method: :delete %></p>
+		<p><%= link_to "Friends", destroy_user_session_path, method: :delete %></p>
+		<p><%= link_to "Messeges", destroy_user_session_path, method: :delete %></p>
+		<%end%>
+
+
+	</div>
 
 </body>
 </html>

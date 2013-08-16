@@ -1,0 +1,7 @@
+<h2>search</h2>
+
+<% if @user.empty? %>
+	<p>nichts gefunden </p>
+<% else %>
+	<%= render text: @user.first.firstname %> 
+<% end %>
