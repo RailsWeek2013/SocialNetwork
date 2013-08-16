@@ -1,0 +1,27 @@
+<h1> Dein User-Profile </h1>
+
+<%= form_for(@user_profile, :url => edituser_path) do |f| %>
+	
+	<div class="text_content">
+		<%= f.label :Vorname%>
+	</div>
+ 	<%= f.text_field :firstname %>
+ 	<br>
+	<div class="text_content">
+		<%= f.label :Nachname%>
+	</div>
+ 	<%= f.text_field :lastname %>
+ 	<br>
+ 	<div class="text_content">
+		<%= f.label :Email%>
+	</div>
+ 	<%= f.text_field :email%>
+ 	<br>
+ 	<div class="text_content">
+		<%= f.label :Geburtstadum%>
+	</div>
+ 	<%= f.text_field :birthday%>
+ 	<br>
+
+  	<%= f.submit %>
+<% end %> 

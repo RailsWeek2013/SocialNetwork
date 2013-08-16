@@ -5,9 +5,14 @@ Socialnetwork::Application.routes.draw do
 
   get 'usersearch' => 'socialnetworks#usersearch'
   get "socialnetwork" => "socialnetworks#index"
+
   get 'friend' => 'friend#friendhome'
   get 'friendadd' => 'friend#friendadd'
   get 'frienddelete' => 'friend#frienddelete'
+
+  get 'userprofile' => 'user#userprofile'
+  patch 'edituser' => 'user#edituser'
+
  
 
   # The priority is based upon order of creation: first created -> highest priority.

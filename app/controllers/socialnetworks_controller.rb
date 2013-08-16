@@ -7,6 +7,11 @@ class SocialnetworksController < ApplicationController
 	def usersearch 		
 			@user = User.where("firstname LIKE ?", params[:key]	)
 	end
+
+	def useredit
+
+
+	end
 end
 
 
