@@ -1,7 +1,7 @@
 class FriendController < ApplicationController
 
 	def friendhome
-		@friends = Friendship.all.where(user_id: current_user.id)
+		@friends = current_user.friends
 	end
 
 	def friendadd
