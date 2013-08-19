@@ -3,10 +3,13 @@ Socialnetwork::Application.routes.draw do
 
   devise_for :users
   root :to => "socialnetworks#index"
+  delete 'deletepost' => 'socialnetworks#deletepost'
+  get 'likepost' => 'socialnetworks#likepost'
 
 
   get 'usersearch' => 'socialnetworks#usersearch'
   get "socialnetwork" => "socialnetworks#index"
+  post 'createpost' => 'socialnetworks#createpost'
 
   get 'friend' => 'friend#friendhome'
   get 'friendadd' => 'friend#friendadd'
@@ -14,7 +17,6 @@ Socialnetwork::Application.routes.draw do
 
   get 'userprofile' => 'user#userprofile'
   patch 'edituser' => 'user#edituser'
-
  
 
   # The priority is based upon order of creation: first created -> highest priority.
