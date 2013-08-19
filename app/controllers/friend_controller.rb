@@ -27,4 +27,10 @@ class FriendController < ApplicationController
 
 		@friend = params[:friend_id]
 	end
+
+	def friendprofile
+
+		@friend = User.where(id: params[:key]).first
+
+	end
 end

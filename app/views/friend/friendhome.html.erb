@@ -1,46 +1,41 @@
-<h1>Freundesliste</h1>
+<h2>Freundesliste</h2>
 
-<h2>Neue Freundschaftsanfragen</h2>
+<h4>Neue Freundschaftsanfragen</h4>
 
+	<table class="table-class">
 
-<table>
+		<% @newfriends.each do |nf| %>
+		<tr>
+			<td>
+				<%=  nf.firstname %>
+			</td>
+			<td>
+				<%=  nf.lastname %>
+			</td>
+			<td>
+			<p><%= link_to "accept friend", friendaccept_path(:friend_id=>nf.id) %> </p> 
+			</td>
+		</tr>
+			
+		<% end %>
 
-	<% @newfriends.each do |nf| %>
-	<tr>
-		<td>
-			<%=  nf.firstname %>
-		</td>
-		<td>
-			<%=  nf.lastname %>
-		</td>
-		<td>
-		<p><%= link_to "accept friend", friendaccept_path(:friend_id=>nf.id) %> </p> 
-		</td>
-	</tr>
-		
-	<% end %>
+	</table>
+	<p></p>
+	<hr>
+	<h4>Meine Freunde</h4>
+
+	<table class="table_class">
+
+		<% @friends.each do |f| %>
+		<tr>
+			<td>
+				<b><%=  link_to "#{f.firstname} #{f.lastname}", friendprofile_path(:key=>f.id) %></b>
+			</td>
+			<td>
+				<button><%= link_to "delete friend", frienddelete_path(:friend_id=>f.id) %> </button>
+			</td>
+		</tr>
+			
+		<% end %>
 
 </table>
-<p></p>
-<hr>
-<h2>Meine Freunde</h2>
-
-<table>
-
-	<% @friends.each do |f| %>
-	<tr>
-		<td>
-			<%=  f.firstname %>
-		</td>
-		<td>
-			<%=  f.lastname %>
-		</td>
-		<td>
-			<p><%= link_to "delete friend", frienddelete_path(:friend_id=>f.id) %> </p>
-		</td>
-	</tr>
-		
-	<% end %>
-
-
-</table
