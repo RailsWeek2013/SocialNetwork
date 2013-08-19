@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   has_many :friends, class_name: User, through: :friendships
   has_many :posts
   has_many :likes
-  has_many :posts, through: :likes
+  has_many :favourites, through: :likes, foreign_key: 'post_id'
+
 
   def accepted_friends 
     f = Friendship.where("user_id = ? AND status = ? or friend_id = ? AND status = ?", self,true, self, true) 
@@ -25,6 +26,5 @@ class User < ActiveRecord::Base
   def unaccepted_friends
     Friendship.where(friend_id: self, status: false).map { |fs| fs.user }
   end 
-
 end
 

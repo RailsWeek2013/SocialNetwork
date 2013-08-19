@@ -1,1 +1,50 @@
 <h2> The Social network</h2>
+<hr>
+<h4> Neuen Post schreiben </h4>
+
+<%= form_for(@post, :url => createpost_path) do |f| %>
+	
+	<div class="text_content">
+		<%= f.label :Titel%>
+	</div>
+ 	<%= f.text_field :title %>
+ 	<br>
+	<div class="text_content">
+		<%= f.label :Text%>
+	</div>
+ 	<%= f.text_field :message %>
+ 	<br>
+ 	<br>
+  	<%= f.submit %>
+<% end %> 
+<hr>
+<h4> Aktuelle Posts </h4>
+
+<% @posts.each do |p| %>
+
+	<div class="post_info">
+		<b>Titel: </b> <%= p.title %>
+		<br>
+		<b>Erstellt von: </b> <%= p.user.firstname %> <%= p.user.lastname %>
+		<br>
+		<br>
+		<b>Nachricht </b>
+		<br>
+		<%= p.message %>
+		<br>
+		<br>
+		<% if p.user == current_user %>
+			<%= link_to "Löschen", deletepost_path(:p_id => p.id), method: "delete"%> 
+		<% end %>
+		<% unless p.user == current_user %>
+			<%= link_to "Like", likepost_path(:p_id => p.id, u_id: p.user.id)%>
+		<% end %>
+
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+		Geliked: <%= p.likes.count %>
+
+		<hr>
+		<br>
+	</div>
+<% end %>
