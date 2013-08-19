@@ -16,6 +16,7 @@
 			<%= text_field_tag(:key) %>
 			<%= submit_tag ("Search") %>
 		<% end %>
+
 	</div>
 
 
@@ -24,13 +25,17 @@
 		<p class="notice a_alert"><%= notice %></p>
 		<p class="alert a_alert"><%= alert %></p>
 
+
 		<% if user_signed_in? %>
 
-		<%= link_to "Logout", destroy_user_session_path, method: :delete %> | 
-		<%= link_to "Friends", friend_path %> | 
-		<%= link_to "Profil", userprofile_path, method: :get %> | 
-		<%= link_to "Dashboard",socialnetwork_path%> | 
-		<%= link_to "Messeges", destroy_user_session_path, method: :delete %> 
+		
+			<%=  current_user.firstname %> <%=  current_user.lastname %>   |
+			
+			<%= link_to "Dashboard",socialnetwork_path%> |  
+			<%= link_to "Profil", userprofile_path, method: :get %> | 	
+			<%= link_to "Friends", friend_path %> | 	
+			<%= link_to "Messeges", destroy_user_session_path, method: :delete %> 
+			<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 		<%end%>
 	</div>
 
