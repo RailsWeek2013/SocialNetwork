@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   has_many :friends, class_name: User, through: :friendships
   has_many :posts
   has_many :likes
-  has_many :posts, through: :likes
+  has_many :favourites, through: :likes, foreign_key: 'post_id'
 end
