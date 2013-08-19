@@ -8,8 +8,9 @@ class SocialnetworksController < ApplicationController
 		limit = 20
 
 		Friendship.where(user_id: current_user).map { |f| @posts += f.friend.posts.limit(limit) }
-		@posts += current_user.posts.limit(limit)
+		Friendship.where(friend_id: current_user).map { |f| @posts += f.friend.posts.limit(limit) }
 
+		@posts += current_user.posts.limit(limit)
 		@posts.sort! do |a,b| 
 			b.created_at <=> a.created_at
 		end
