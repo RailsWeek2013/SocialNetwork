@@ -1,12 +1,13 @@
 class SocialnetworksController < ApplicationController
 
 	def index 
+
 		@post = Post.new
 		@posts = Array.new
 
 		limit = 20
 
-		Friendship.where(user_id: current_user).map { |f| @posts += f.friends.posts.limit(limit) }
+		Friendship.where(user_id: current_user).map { |f| @posts += f.friend.posts.limit(limit) }
 		@posts += current_user.posts.limit(limit)
 
 		@posts.sort! do |a,b| 
@@ -15,7 +16,7 @@ class SocialnetworksController < ApplicationController
 	end
 
 	def usersearch 		
-			@user = User.where("firstname LIKE ?", params[:key]	)
+		@user = User.where("firstname LIKE ?", params[:key]	)
 	end
 
 	def createpost

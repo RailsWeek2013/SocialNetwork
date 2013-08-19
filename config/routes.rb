@@ -14,6 +14,7 @@ Socialnetwork::Application.routes.draw do
   get 'friend' => 'friend#friendhome'
   get 'friendadd' => 'friend#friendadd'
   get 'frienddelete' => 'friend#frienddelete'
+  get 'friendaccept' => 'friend#friendaccept'
 
   get 'userprofile' => 'user#userprofile'
   patch 'edituser' => 'user#edituser'

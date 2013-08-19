@@ -1,5 +1,30 @@
-<h2>Friendlist</h2>
+<h1>Freundesliste</h1>
+
+<h2>Neue Freundschaftsanfragen</h2>
+
+
+<table>
+
+	<% @newfriends.each do |nf| %>
+	<tr>
+		<td>
+			<%=  nf.firstname %>
+		</td>
+		<td>
+			<%=  nf.lastname %>
+		</td>
+		<td>
+		<p><%= link_to "accept friend", friendaccept_path(:friend_id=>nf.id) %> </p> 
+		</td>
+	</tr>
+		
+	<% end %>
+
+</table>
+<p></p>
 <hr>
+<h2>Meine Freunde</h2>
+
 <table>
 
 	<% @friends.each do |f| %>
@@ -11,9 +36,11 @@
 			<%=  f.lastname %>
 		</td>
 		<td>
-			<p><%= link_to "delete friend", "#" %> </p>
+			<p><%= link_to "delete friend", frienddelete_path(:friend_id=>f.id) %> </p>
 		</td>
 	</tr>
 		
 	<% end %>
-</table
+
+
+</table>
