@@ -1,5 +1,19 @@
 <h2>Friendlist</h2>
 
-<%= debug @friends %> 
+<table>
 
-<p><%= link_to "delete friend", "#" %> </p>
+	<% @friends.each do |f| %>
+	<tr>
+		<td>
+			<%=  f.firstname %>
+		</td>
+		<td>
+			<%=  f.lastname %>
+		</td>
+		<td>
+			<p><%= link_to "delete friend", "#" %> </p>
+		</td>
+	</tr>
+		
+	<% end %>
+</table

@@ -18,10 +18,7 @@
 		<% end %>
 	</div>
 
-	<div class="content">
-		
-		<%= yield %>
-	</div>
+
 
 	<div class="navigationbar">
 		<p class="notice a_alert"><%= notice %></p>
@@ -29,14 +26,17 @@
 
 		<% if user_signed_in? %>
 
-		<p><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
-		<p><%= link_to "Friends", friend_path %></p>
-		<p><%= link_to "Profil", userprofile_path, method: :get %></p>
-		<p><%= link_to "Dashboard",socialnetwork_path%></p>
-		<p><%= link_to "Messeges", destroy_user_session_path, method: :delete %></p>
+		<%= link_to "Logout", destroy_user_session_path, method: :delete %> | 
+		<%= link_to "Friends", friend_path %> | 
+		<%= link_to "Profil", userprofile_path, method: :get %> | 
+		<%= link_to "Dashboard",socialnetwork_path%> | 
+		<%= link_to "Messeges", destroy_user_session_path, method: :delete %> 
 		<%end%>
+	</div>
 
-
+	<div class="content">
+		
+		<%= yield %>
 	</div>
 
 </body>

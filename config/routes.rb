@@ -1,4 +1,6 @@
 Socialnetwork::Application.routes.draw do
+  resources :likes
+
   devise_for :users
   root :to => "socialnetworks#index"
 
