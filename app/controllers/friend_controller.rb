@@ -43,8 +43,7 @@ class FriendController < ApplicationController
 	def friendprofile
 
 		@friend = User.where(id: params[:key]).first
-		@pins = Pinboard.where(user_id: current_user.id, friend_id: params[:key])
-
+		@pins = Pinboard.where(user_id: current_user.id, friend_id: params[:key]).order('created_at desc').all
 	end
 
 	def friendnewpinentry

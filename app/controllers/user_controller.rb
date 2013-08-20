@@ -1,7 +1,7 @@
 class UserController < ApplicationController
 	def userprofile
 		@user_profile = current_user
-		@pins = Pinboard.where(friend_id: current_user.id)
+		@pins = Pinboard.where(friend_id: current_user.id).order('created_at desc').all
 	end
 
 	def edituser
