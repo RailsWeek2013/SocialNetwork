@@ -5,6 +5,6 @@
 <% else %>
 	<% @user.each do |u| %> 
 		<%=  u.firstname %> <%=  u.lastname %> | 
-		<button><%= link_to "Add Friend", friendadd_path(:friend_id=>u.id) %></button><p>
+		<%= link_to "Add Friend", friendadd_path(:friend_id=>u.id) %><p>
 	<% end %>
 <% end %>
