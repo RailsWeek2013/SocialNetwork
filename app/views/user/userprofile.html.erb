@@ -28,3 +28,12 @@
 
   	<%= f.submit %>
 <% end %> 
+
+<h2> Pinnwand </h2>
+<hr>
+	<% @mypins.each do |mp| %> 
+		<b><%= mp.user.firstname %> schreibt:</b><br>
+		<%=  mp.entry %> 
+		<%= link_to "delete", frienddeletepin_path(:pin_id=>mp.id) %><p>
+		<hr>
+	<% end %>		
