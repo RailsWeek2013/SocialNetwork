@@ -8,7 +8,10 @@ class SocialnetworksController < ApplicationController
 		limit = 15
 
 		Friendship.where(user_id: current_user).map { |f| @posts += f.friend.posts.limit(limit) }
-		Friendship.where(friend_id: current_user).map { |f| @posts += f.friend.posts.limit(limit) }
+
+		#if @posts.count < 0
+			Friendship.where(friend_id: current_user).map { |f| @posts += f.friend.posts.limit(limit) }
+		#end
 
 		@posts += current_user.posts.limit(limit)
 		@posts.sort! do |a,b| 
@@ -62,5 +65,3 @@ class SocialnetworksController < ApplicationController
       params.require(:post).permit(:title, :message)
     end
 end
-
-

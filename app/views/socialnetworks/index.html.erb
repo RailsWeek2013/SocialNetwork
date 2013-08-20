@@ -2,6 +2,8 @@
 <hr>
 <h4> Neuen Post schreiben </h4>
 
+
+
 <%= form_for(@post, :url => createpost_path) do |f| %>
 	
 	<div class="text_content">
@@ -19,6 +21,8 @@
 <% end %> 
 <hr>
 <h4> Aktuelle Posts </h4>
+
+<%= @posts.count %>
 
 <% @posts.each do |p| %>
 
