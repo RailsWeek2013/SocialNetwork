@@ -5,6 +5,7 @@ class SocialnetworksController < ApplicationController
 		@post = Post.new
 		@posts = Array.new
 		@likes = User.find(current_user).likes.map{|l| l.post_id}
+		limit = 15
 
 		Friendship.where(user_id: current_user).map { |f| @posts += f.friend.posts.limit(limit) }
 		Friendship.where(friend_id: current_user).map { |f| @posts += f.user.posts.limit(limit) }
