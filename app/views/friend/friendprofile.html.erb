@@ -13,8 +13,5 @@ Geburtstag: <p><b><%= @friend.birthday %></b>
 			<%= submit_tag ("Beitrag erstellen") %>
 		<% end %>
 <hr>
-	<% @pins.each do |p| %> 
-		<b><%= p.user.firstname %> schreibt:</b><br>
-		<%=  p.entry %> 
-		<hr>
-	<% end %>		
+
+<%= render partial: 'user/pinboard' , locals: {isowner: false} %>	
