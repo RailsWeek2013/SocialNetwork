@@ -3,6 +3,17 @@
 
 <hr>
 
+<h4> Dein Avatar </h4>
+
+<%= render partial: 'avatars/form',
+           object: current_user,
+           as: :avatarable %>
+<br>
+<br>
+<%= image_tag(current_user.logo.url(:style) ) %>
+
+<hr>
+
 <%= form_for(@user_profile, :url => edituser_path) do |f| %>
 	
 	<div class="text_content">

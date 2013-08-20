@@ -33,6 +33,11 @@ group :doc do
 end
 
 gem 'devise'
+gem 'rmagick', '2.13.2'
+gem 'avatars_for_rails'
+
+gem 'better_errors'
+#gem 'binding_for_caller'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

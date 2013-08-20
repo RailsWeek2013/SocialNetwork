@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130820092059) do
+ActiveRecord::Schema.define(version: 20130820112737) do
 
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
@@ -66,6 +66,10 @@ ActiveRecord::Schema.define(version: 20130820092059) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
