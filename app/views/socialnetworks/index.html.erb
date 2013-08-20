@@ -2,8 +2,6 @@
 <hr>
 <h4> Neuen Post schreiben </h4>
 
-
-
 <%= form_for(@post, :url => createpost_path) do |f| %>
 	
 	<div class="text_content">
@@ -22,7 +20,7 @@
 <hr>
 <h4> Aktuelle Posts </h4>
 
-<%= @posts.count %>
+<%= debug @likes %>
 
 <% @posts.each do |p| %>
 
@@ -38,10 +36,16 @@
 		<br>
 		<br>
 		<% if p.user == current_user %>
-			<%= link_to "Löschen", deletepost_path(:p_id => p.id), method: "delete"%> 
+			<%= link_to "Löschen", deletepost_path(:p_id => p.id), method: "delete"%>
 		<% end %>
 		<% unless p.user == current_user %>
-			<%= link_to "Like", likepost_path(:p_id => p.id, u_id: p.user.id)%>
+
+			<% if @likes.include? p.id %>
+				Beitrag ist geliked
+			<% else %>
+				<%= link_to "Like", likepost_path(:p_id => p.id)%>
+			<% end %>
+
 		<% end %>
 
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
