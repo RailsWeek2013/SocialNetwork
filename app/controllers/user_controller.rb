@@ -1,7 +1,7 @@
 class UserController < ApplicationController
 	def userprofile
 		@user_profile = current_user
-		@mypins = Pinboard.where(friend_id: current_user.id)
+		@pins = Pinboard.where(friend_id: current_user.id)
 	end
 
 	def edituser

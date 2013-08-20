@@ -8,9 +8,19 @@ class FriendController < ApplicationController
 
 	def friendadd
 
-		Friendship.create(user_id: current_user.id, friend_id: params[:friend_id], status: false)
+		f = Friendship.where(user_id: current_user.id, friend_id: params[:friend_id]).first
+
+		unless f.nil?
+			redirect_to friend_path, notice: f.status ? "Anfrage bereits bestätigt" : "Anfrage schon gesendet"
+		else
+			Friendship.create(user_id: current_user.id, friend_id: params[:friend_id], status: false)
+
+			redirect_to friend_path, notice: "Anfrage wurde verschickt"
+		end
 
 		@friend = params[:friend_id]
+
+
 	end
 
 	def friendaccept
@@ -18,6 +28,8 @@ class FriendController < ApplicationController
 		f = Friendship.where(user_id: params[:friend_id], friend_id: current_user.id ).first
 		f.update(status: true)
 		@friend = params[:friend_id]
+
+		redirect_to friendprofile_path(key: params[:friend_id]), notice: "Freund wurde hinzugefügt"
 	end
 
 	def frienddelete
@@ -25,7 +37,7 @@ class FriendController < ApplicationController
 			
 	    f.destroy
 
-		@friend = params[:friend_id]
+		redirect_to friend_path, notice: "Freund wurde erfolgreich gelöscht"
 	end
 
 	def friendprofile
@@ -37,10 +49,14 @@ class FriendController < ApplicationController
 
 	def friendnewpinentry
 		Pinboard.create(user_id: current_user.id, friend_id: params[:friend_id], entry: params[:msg])
+
+		redirect_to friendprofile_path(key: params[:friend_id]), notice: "Pinwandeintrag wurde erfolgreich erstellt"
 	end
 
 	def frienddeletepinentry
 		p = Pinboard.where(id: params[:pin_id]).first
 		p.destroy
+
+		redirect_to userprofile_path, notice: "Pinwandeintrag wurde erfolgreich gelöscht"
 	end
 end
