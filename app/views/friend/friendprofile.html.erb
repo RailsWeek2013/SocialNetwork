@@ -3,6 +3,7 @@
 Name: <p> <b><%= @friend.firstname %> <%= @friend.lastname %></b>
 <p>
 Geburtstag: <p><b><%= @friend.birthday %></b>
+
 <hr>
 <h4> Pinnwand </h4>
 		<%= form_tag("/friendnewpin", method: "get") do %>
@@ -17,4 +18,3 @@ Geburtstag: <p><b><%= @friend.birthday %></b>
 		<%=  p.entry %> 
 		<hr>
 	<% end %>		
-
