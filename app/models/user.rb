@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :likes
   has_many :favourites, through: :likes, foreign_key: 'post_id'
+  has_many :pinboards
 
 
   def accepted_friends 

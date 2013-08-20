@@ -31,6 +31,16 @@ class FriendController < ApplicationController
 	def friendprofile
 
 		@friend = User.where(id: params[:key]).first
+		@pins = Pinboard.where(user_id: current_user.id, friend_id: params[:key])
 
+	end
+
+	def friendnewpinentry
+		Pinboard.create(user_id: current_user.id, friend_id: params[:friend_id], entry: params[:msg])
+	end
+
+	def frienddeletepinentry
+		p = Pinboard.where(id: params[:pin_id]).first
+		p.destroy
 	end
 end

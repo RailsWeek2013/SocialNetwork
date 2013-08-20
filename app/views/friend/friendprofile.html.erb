@@ -3,3 +3,18 @@
 Name: <p> <b><%= @friend.firstname %> <%= @friend.lastname %></b>
 <p>
 Geburtstag: <p><b><%= @friend.birthday %></b>
+
+<hr>
+<h4> Pinnwand </h4>
+		<%= form_tag("/friendnewpin", method: "get") do %>
+			<%= label_tag(:msg, "Hinterlasse einen Eintrag:") %><p>
+			<%= text_field_tag(:msg) %><p>
+			<%= hidden_field_tag 'friend_id', @friend.id %>
+			<%= submit_tag ("Beitrag erstellen") %>
+		<% end %>
+<hr>
+	<% @pins.each do |p| %> 
+		<b><%= p.user.firstname %> schreibt:</b><br>
+		<%=  p.entry %> 
+		<hr>
+	<% end %>		
