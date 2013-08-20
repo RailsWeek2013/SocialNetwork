@@ -1,6 +1,8 @@
 <h2>Freundesliste</h2>
 
-<h4>Neue Freundschaftsanfragen</h4>
+<% unless @newfriends.first.nil? %>
+
+	<h4>Neue Freundschaftsanfragen</h4>
 
 	<table class="table-class">
 
@@ -21,6 +23,8 @@
 
 	</table>
 	<p></p>
+<% end %>	
+
 	<hr>
 	<h4>Meine Freunde</h4>
 
