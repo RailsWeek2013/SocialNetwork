@@ -3,11 +3,8 @@
 <% if @user.empty? %>
 	<p>nichts gefunden </p>
 <% else %>
-	<%= render text: @user.first.firstname %> 
-	<%= render text: @user.first.lastname %> | 
-	<%= link_to "Add Friend", friendadd_path(:friend_id=>@user.first.id) %>
+	<% @user.each do |u| %> 
+		<%=  u.firstname %> <%=  u.lastname %> | 
+		<%= link_to "Add Friend", friendadd_path(:friend_id=>u.id) %><p>
+	<% end %>
 <% end %>
-
-					
-		
-		

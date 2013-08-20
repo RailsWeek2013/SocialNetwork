@@ -17,7 +17,7 @@ class SocialnetworksController < ApplicationController
 	end
 
 	def usersearch 		
-		@user = User.where("firstname LIKE ?", params[:key]	)
+		@user = User.all.where("firstname LIKE ? OR lastname LIKE ?", params[:key], params[:key])
 	end
 
 	def createpost
