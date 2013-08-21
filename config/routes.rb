@@ -15,13 +15,20 @@ Socialnetwork::Application.routes.draw do
   get 'friendadd' => 'friend#friendadd'
   get 'frienddelete' => 'friend#frienddelete'
   get 'friendaccept' => 'friend#friendaccept'
+  get 'frienddenie' => 'friend#frienddenie'
   get 'friendprofile' => 'friend#friendprofile'
   get 'friendnewpin' => 'friend#friendnewpinentry'
   get 'frienddeletepin' => 'friend#frienddeletepinentry'
 
   get 'userprofile' => 'user#userprofile'
   patch 'edituser' => 'user#edituser'
+
+  get 'messages' => 'messages#index'
+  get 'messagesnew' => 'messages#newmsg'
+  post 'messagesavenewmsg' => 'messages#savenewmsg'
+  get 'messageshowconversation/:id' => 'messages#showconversation', as: "showconversation"
  
+  #resources :messages
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

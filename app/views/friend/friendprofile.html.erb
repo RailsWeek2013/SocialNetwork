@@ -4,6 +4,8 @@ Name: <p> <b><%= @friend.firstname %> <%= @friend.lastname %></b>
 <p>
 Geburtstag: <p><b><%= @friend.birthday %></b>
 
+<p><%= link_to "private Nachricht schreiben", messagesnew_path(:friend_id=>@friend.id) %> </p> 
+
 <hr>
 <h4> Pinnwand </h4>
 		<%= form_tag("/friendnewpin", method: "get") do %>

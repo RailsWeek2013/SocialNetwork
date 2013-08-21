@@ -15,7 +15,8 @@
 				<%=  nf.lastname %>
 			</td>
 			<td>
-			<p><%= link_to "accept friend", friendaccept_path(:friend_id=>nf.id) %> </p> 
+			<p><%= link_to "accept", friendaccept_path(:friend_id=>nf.id) %> 
+				<%= link_to "denie", frienddenie_path(:friend_id=>nf.id) %> </p> 
 			</td>
 		</tr>
 			
