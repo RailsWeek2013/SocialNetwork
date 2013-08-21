@@ -1,0 +1,6 @@
+	<%= form_tag("/messagesavenewmsg") do %>
+		<%= label_tag(:msg, "deine Nachricht:") %><p>
+		<%= text_area_tag(:msg) %><p>
+		<%= hidden_field_tag 'friend_id', friend.id %>
+		<%= submit_tag ("senden") %>
+	<% end %>

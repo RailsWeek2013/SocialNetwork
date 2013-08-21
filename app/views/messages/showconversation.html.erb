@@ -1,0 +1,28 @@
+<% if @msgs.last.sender == current_user %>
+	<% friend = @msgs.last.reciepient %>
+<% else %> 		
+	<%  friend = @msgs.last.sender %> 
+<% end %>
+
+<h4> Unterhaltung mit <%= friend.firstname %></h4>
+
+<%= render partial: 'newmessage', locals: {friend: friend} %>
+
+<div class="messages">
+	
+	<% @msgs.each do |m| %> 
+		
+		<% if m.sender == current_user %>
+			<p class= 'msg-left'>
+		<% else %>
+			<p class= 'msg-right'>
+		<% end %>
+		<b><%= m.sender.firstname %> <%= m.sender.lastname %>:</b>
+		<br>
+		   <%= m.msg %>		
+		<hr>	
+		</p>
+	<% end %>
+
+				
+</div>
