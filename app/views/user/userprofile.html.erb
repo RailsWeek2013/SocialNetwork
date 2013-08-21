@@ -3,6 +3,26 @@
 
 <hr>
 
+<h4> Dein Avatar </h4>
+<img src="<%= current_user.avatar.url %>">
+
+<%= form_for(@user_profile, :url => edituser_path) do |a| %>
+
+	<div class="text_content">
+		<%= a.label :avatar%>
+	</div>
+	<br>
+	<div class="text_content">
+		<%= a.file_field :avatar%>
+	</div>
+	<br>
+	<br>
+  	<%= a.submit %>
+
+<% end %>
+
+<hr>
+
 <%= form_for(@user_profile, :url => edituser_path) do |f| %>
 	
 	<div class="text_content">
@@ -25,8 +45,6 @@
 	</div>
  	<%= f.text_field :birthday%>
  	<br>
-
-  	<%= f.submit %>
 <% end %> 
 
 <h2> Pinnwand </h2>

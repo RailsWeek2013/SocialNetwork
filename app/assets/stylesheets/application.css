@@ -12,4 +12,8 @@
  *= require_tree .
  */
 
+.notice a_alert{
+	background-color: 9FF85E;
+	width: auto;
+}
  

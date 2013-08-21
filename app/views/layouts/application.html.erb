@@ -16,19 +16,21 @@
 			<%= text_field_tag(:key) %>
 			<%= submit_tag ("Search") %>
 		<% end %>
+		<% if user_signed_in? %>
+		<img src="<%= current_user.avatar.url %>">
+		<% end %>
 
 	</div>
 
 
 
 	<div class="navigationbar">
-		<p class="notice a_alert"><%= notice %></p>
-		<p class="alert a_alert"><%= alert %></p>
+		<p class="notice a_alert"><%= notice %> </p>
+		<p class="alert a_alert"><%= alert %> </p>
 
 
 		<% if user_signed_in? %>
 
-		
 			<%=  current_user.firstname %> <%=  current_user.lastname %>   |
 			
 			<%= link_to "Dashboard",socialnetwork_path%> |  
