@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130820092059) do
+ActiveRecord::Schema.define(version: 20130821092018) do
 
-  create_table "friends", force: true do |t|
-    t.integer  "user"
-    t.integer  "friend"
+  create_table "conversations", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "reciepient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "conversations", ["sender_id", "reciepient_id"], name: "index_conversations_on_sender_id_and_reciepient_id", unique: true
 
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
@@ -37,6 +39,15 @@ ActiveRecord::Schema.define(version: 20130820092059) do
 
   add_index "likes", ["post_id"], name: "index_likes_on_post_id"
   add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
+  create_table "messages", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "reciepient_id"
+    t.text     "msg"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "conversation_id"
+  end
 
   create_table "pinboards", force: true do |t|
     t.integer  "user_id"

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :favourites, through: :likes, foreign_key: 'post_id'
   has_many :pinboards
+  has_many :conversations, foreign_key: "sender_id"
 
 
   def accepted_friends 
@@ -28,5 +29,9 @@ class User < ActiveRecord::Base
   def unaccepted_friends
     Friendship.where(friend_id: self, status: false).map { |fs| fs.user }
   end 
+
+  def received_conversations
+    Conversation.where(reciepient: self)
+  end
 end
 
