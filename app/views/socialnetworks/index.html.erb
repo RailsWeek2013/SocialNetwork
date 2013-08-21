@@ -1,5 +1,3 @@
-<h2> The Social network</h2>
-<hr>
 <h4> Neuen Post schreiben </h4>
 
 <%= form_for(@post, :url => createpost_path) do |f| %>
@@ -12,7 +10,7 @@
 	<div class="text_content">
 		<%= f.label :Text%>
 	</div>
- 	<%= f.text_field :message %>
+ 	<%= f.text_area :message %>
  	<br>
  	<br>
   	<%= f.submit %>
@@ -23,9 +21,12 @@
 <% @posts.each do |p| %>
 
 	<div class="post_info">
+		<div class="post_avatar">
+			<img src="<%= p.user.avatar.url %>">
+		</div>
 		<b>Titel: </b> <%= p.title %>
 		<br>
-		<b>Erstellt von: </b> <%= p.user.firstname %> <%= p.user.lastname %>
+		<b>Erstellt von: </b> <%= p.user.firstname %> <%= p.user.lastname %> 
 		<br>
 		<br>
 		<b>Nachricht </b>
@@ -46,7 +47,11 @@
 
 		<% end %>
 
-		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+		<%= link_to "Kommentieren", commentpost_path(p.id) %>
+
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 		Geliked: <%= p.likes.count %>
 

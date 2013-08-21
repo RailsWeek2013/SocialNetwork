@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
 
+  mount_uploader :avatar, AvatarUploader
+
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
   has_many :friendships
@@ -12,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :favourites, through: :likes, foreign_key: 'post_id'
   has_many :pinboards
   has_many :conversations, foreign_key: "sender_id"
+  has_many :comments
+
 
 
   def accepted_friends 

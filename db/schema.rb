@@ -11,11 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20130821092018) do
 
   create_table "conversations", force: true do |t|
     t.integer  "sender_id"
     t.integer  "reciepient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+
+  end
+
+
+  create_table "comments", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -84,6 +95,11 @@ ActiveRecord::Schema.define(version: 20130821092018) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -8,7 +8,7 @@
 
 </head>
 <body>
-
+<div class="container">
 	<div class="header">
 
 		<%= form_tag("/usersearch", method: "get") do %>
@@ -17,24 +17,27 @@
 			<%= submit_tag ("Search") %>
 		<% end %>
 
+		<% if user_signed_in? %>
+			<img src="<%= current_user.avatar.url %>">
+		<% end %>
+
 	</div>
 
 
 
 	<div class="navigationbar">
-		<p class="notice a_alert"><%= notice %></p>
-		<p class="alert a_alert"><%= alert %></p>
-
+		<div class="notice a_alert">
+		 <%= notice %> <%= alert %> &nbsp
+		</div>
 
 		<% if user_signed_in? %>
 
-		
-			<%=  current_user.firstname %> <%=  current_user.lastname %>   |
+			<%=  current_user.firstname %> <%=  current_user.lastname %>   &nbsp
 			
-			<%= link_to "Dashboard",socialnetwork_path%> |  
-			<%= link_to "Profil", userprofile_path, method: :get %> | 	
-			<%= link_to "Friends", friend_path %> | 	
-			<%= link_to "Messeges", messages_path %> |
+			<%= link_to "Dashboard",socialnetwork_path%> &nbsp |  &nbsp
+			<%= link_to "Profil", userprofile_path, method: :get %> | 	&nbsp
+			<%= link_to "Friends", friend_path %> &nbsp | &nbsp
+			<%= link_to "Messeges", destroy_user_session_path, method: :delete %> &nbsp | &nbsp
 			<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 		<%end%>
 	</div>
@@ -43,6 +46,6 @@
 		
 		<%= yield %>
 	</div>
-
+</div>
 </body>
 </html>

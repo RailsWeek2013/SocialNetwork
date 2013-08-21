@@ -5,6 +5,10 @@ Socialnetwork::Application.routes.draw do
   root :to => "socialnetworks#index"
   delete 'deletepost' => 'socialnetworks#deletepost'
   get 'likepost' => 'socialnetworks#likepost'
+  get 'commentpost/:p_id' => 'socialnetworks#commentpost', as: "commentpost"
+  post 'addcomment' => 'socialnetworks#addcomment'
+  delete 'deletecomment' => 'socialnetworks#deletecomment'
+
 
 
   get 'usersearch' => 'socialnetworks#usersearch'

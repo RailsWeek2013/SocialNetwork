@@ -1,0 +1,60 @@
+<h2> <%= @post.title %> </h2>
+
+<hr>
+
+<div class="post_info">
+	<div class="post_avatar">
+		<img src="<%= @post.user.avatar.url %>">
+	</div>
+	<br>
+	<b>Erstellt von: </b> <%= @post.user.firstname %> <%= @post.user.lastname %> 
+	<br>
+	<br>
+	<b>Nachricht: </b>
+	<br>
+	<%= @post.message %>
+	<br>
+</div>
+
+<hr>
+
+<h4> Neuen Kommentar schreiben </h4>
+<%= form_for(@comment, :url => addcomment_path) do |c| %>
+
+	<%= c.text_area :comment %>
+	<%= c.hidden_field :user_id, :value => current_user.id %>
+	<%= c.hidden_field :post_id, :value => @post.id %>
+	<br>
+	<br>
+	<%= c.submit %>
+<% end %>
+
+<hr>
+
+<h4> Kommentare </h4>
+
+<% if @post_comments.count == 0 %>
+	Es sind keine Kommentare zu diesem Beitrag vorhanden
+<% end %>
+
+<% @post_comments.each do |c| %>
+
+	<div class="post_info">
+
+		<div class="post_avatar">
+			<img src="<%= c.user.avatar.url %>">
+		</div>
+		<b>Von:</b> <%= c.user.firstname %> <%= @post.user.lastname %> 
+		<br>
+		<b>Kommentar:</b>
+		<br>
+		<%= c.comment %>
+		<br>
+		<br>
+		<% if c.post.user == current_user %>
+			<%= link_to "Löschen", deletecomment_path(:c_id => c.id, :p_id => c.post.id), method: "delete"%>
+		<% end %>
+		
+		<hr>
+	</div>
+<% end %>
