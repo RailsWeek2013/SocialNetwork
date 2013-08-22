@@ -3,11 +3,11 @@ Socialnetwork::Application.routes.draw do
 
   devise_for :users
   root :to => "socialnetworks#index"
-  delete 'deletepost' => 'socialnetworks#deletepost'
-  get 'likepost' => 'socialnetworks#likepost'
+  delete 'deletepost/:p_id' => 'socialnetworks#deletepost', as: "deletepost"
+  get 'likepost/:p_id' => 'socialnetworks#likepost', as: "likepost"
   get 'commentpost/:p_id' => 'socialnetworks#commentpost', as: "commentpost"
   post 'addcomment' => 'socialnetworks#addcomment'
-  delete 'deletecomment' => 'socialnetworks#deletecomment'
+  delete 'deletecomment/:c_id/:p_id' => 'socialnetworks#deletecomment', as: "deletecomment"
 
 
 

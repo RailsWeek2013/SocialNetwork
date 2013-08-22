@@ -10,12 +10,9 @@ class UserController < ApplicationController
 	end
 
 	def edituser
-		if current_user.update(profile_params)
-			redirect_to userprofile_path, notice: "Erfolgreich geändert."
-		else
-			redirect_to userprofile_path, notice: "Es ist ein Fehler aufgetreten."
-		end
-
+		
+		current_user.update(profile_params)
+		redirect_to userprofile_path, notice: "Erfolgreich geändert."
 	end
 
 	private

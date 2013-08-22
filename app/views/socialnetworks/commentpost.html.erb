@@ -52,7 +52,7 @@
 		<br>
 		<br>
 		<% if c.post.user == current_user %>
-			<%= link_to "Löschen", deletecomment_path(:c_id => c.id, :p_id => c.post.id), method: "delete"%>
+			<%= link_to "Löschen", deletecomment_path(c.id, c.post.id), method: "delete"%>
 		<% end %>
 		
 		<hr>

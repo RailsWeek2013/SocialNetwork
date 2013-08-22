@@ -35,14 +35,14 @@
 		<br>
 		<br>
 		<% if p.user == current_user %>
-			<%= link_to "Löschen", deletepost_path(:p_id => p.id), method: "delete"%>
+			<%= link_to "Löschen", deletepost_path(p.id), method: "delete"%>
 		<% end %>
 		<% unless p.user == current_user %>
 
 			<% if @likes.include? p.id %>
 				Beitrag ist geliked
 			<% else %>
-				<%= link_to "Like", likepost_path(:p_id => p.id)%>
+				<%= link_to "Like", likepost_path(p.id)%>
 			<% end %>
 
 		<% end %>
