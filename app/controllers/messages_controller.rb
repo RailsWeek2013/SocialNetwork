@@ -16,15 +16,15 @@ class MessagesController < ApplicationController
 		c = Conversation.where("(sender_id = ? AND reciepient_id = ?) OR (sender_id = ? AND reciepient_id = ?)",current_user.id,  params[:friend_id], params[:friend_id], current_user.id ).first
 		
 		if c.nil?
-			Conversation.create(user_id: current_user.id, friend_id: params[:friend_id])
+			Conversation.create(sender_id: current_user.id, reciepient_id: params[:friend_id])
 			nc = Conversation.where("(sender_id = ? AND reciepient_id = ?) OR (sender_id = ? AND reciepient_id = ?)",current_user.id,  params[:friend_id], params[:friend_id], current_user.id ).first
-			Message.create(conversation_id: nc.id, user_id: current_user.id, friend_id: params[:friend_id], msg: params[:msg])
+			Message.create(conversation_id: nc.id, sender_id: current_user.id, reciepient_id: params[:friend_id], msg: params[:msg])
+			redirect_to showconversation_path(nc.id), notice: "Nachricht wurde verschickt"
 		else
 
 			Message.create(conversation_id: c.id, sender_id: current_user.id, reciepient_id: params[:friend_id], msg: params[:msg])
+			redirect_to showconversation_path(c.id), notice: "Nachricht wurde verschickt"
 		end
-		
-		redirect_to showconversation_path(c.id), notice: "Nachricht wurde verschickt"
 	end
 
 	def showconversation
