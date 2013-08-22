@@ -1,6 +1,7 @@
 class FriendController < ApplicationController
 
 	def friendhome
+
 		@friends = current_user.accepted_friends
 		@newfriends = current_user.unaccepted_friends
 	end
@@ -19,8 +20,6 @@ class FriendController < ApplicationController
 		end
 
 		@friend = params[:friend_id]
-
-
 	end
 
 	def friendaccept
@@ -55,18 +54,20 @@ class FriendController < ApplicationController
 
 	def friendprofile
 
-		@friend = User.where(id: params[:key]).first
+		@friend = User.find(params[:key])
 		@pins = Pinboard.where(user_id: current_user.id, friend_id: params[:key]).order('created_at desc').all
 	end
 
 	def friendnewpinentry
+
 		Pinboard.create(user_id: current_user.id, friend_id: params[:friend_id], entry: params[:msg])
 
 		redirect_to friendprofile_path(key: params[:friend_id]), notice: "Pinwandeintrag wurde erfolgreich erstellt"
 	end
 
 	def frienddeletepinentry
-		p = Pinboard.where(id: params[:pin_id]).first
+		
+		p = Pinboard.(params[:pin_id])
 		p.destroy
 
 		redirect_to userprofile_path, notice: "Pinwandeintrag wurde erfolgreich gelöscht"

@@ -1,7 +1,8 @@
 Socialnetwork::Application.routes.draw do
   resources :likes
 
-  devise_for :users
+  devise_for :users 
+
   root :to => "socialnetworks#index"
   delete 'deletepost' => 'socialnetworks#deletepost'
   get 'likepost' => 'socialnetworks#likepost'
@@ -27,12 +28,20 @@ Socialnetwork::Application.routes.draw do
   get 'userprofile' => 'user#userprofile'
   patch 'edituser' => 'user#edituser'
 
-  get 'messages' => 'messages#index'
+  #get 'messages' => 'messages#index'
   get 'messagesnew' => 'messages#newmsg'
   post 'messagesavenewmsg' => 'messages#savenewmsg'
   get 'messageshowconversation/:id' => 'messages#showconversation', as: "showconversation"
  
-  #resources :messages
+  resources :users, only: [] do
+    resources :messages, only: [:new, :create]
+  end
+
+  #get 'messages(/:id)/new' => 'messages#new', as: "new_message"
+  resources :messages, except: [:new] do 
+  end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

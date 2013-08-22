@@ -6,7 +6,7 @@
 
 <h4> Unterhaltung mit <%= friend.firstname %></h4>
 
-<%= render partial: 'newmessage', locals: {friend: friend} %>
+<%= render partial: 'newmessage', locals: {friend: friend, message: @message} %>
 
 <div class="messages">
 	

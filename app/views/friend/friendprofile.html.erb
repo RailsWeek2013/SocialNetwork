@@ -7,7 +7,7 @@
 <p>
 Geburtstag: <p><b><%= @friend.birthday %></b>
 
-<p><%= link_to "private Nachricht schreiben", messagesnew_path(:friend_id=>@friend.id) %> </p> 
+<p><%= link_to "private Nachricht schreiben", new_user_message_path(@friend) %> </p> 
 
 <hr>
 <h4> Pinnwand </h4>

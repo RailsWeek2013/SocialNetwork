@@ -1,38 +1,37 @@
 class MessagesController < ApplicationController
 
 	def index
-		#@conversations = Conversation.where("sender_id = ? OR reciepient_id = ? ",current_user.id,  current_user.id)
-		#Message.where("user_id = ? OR friend_id = ? ",current_user.id,  current_user.id).group('user_id, friend_id')
+	
 		@conversations = current_user.conversations
 		@conversations += current_user.received_conversations
 	end
 	
-	def newmsg
-		@friend = User.where(id: params[:friend_id]).first
-	end	
+	def new
 
-	def savenewmsg
+		@friend = User.find(params[:user_id])
+		@message = Message.new
+	end
 
-		c = Conversation.where("(sender_id = ? AND reciepient_id = ?) OR (sender_id = ? AND reciepient_id = ?)",current_user.id,  params[:friend_id], params[:friend_id], current_user.id ).first
-		
-		if c.nil?
-			Conversation.create(sender_id: current_user.id, reciepient_id: params[:friend_id])
-			nc = Conversation.where("(sender_id = ? AND reciepient_id = ?) OR (sender_id = ? AND reciepient_id = ?)",current_user.id,  params[:friend_id], params[:friend_id], current_user.id ).first
-			Message.create(conversation_id: nc.id, sender_id: current_user.id, reciepient_id: params[:friend_id], msg: params[:msg])
-			redirect_to showconversation_path(nc.id), notice: "Nachricht wurde verschickt"
-		else
+	def create
 
-			Message.create(conversation_id: c.id, sender_id: current_user.id, reciepient_id: params[:friend_id], msg: params[:msg])
-			redirect_to showconversation_path(c.id), notice: "Nachricht wurde verschickt"
-		end
+		m = Message.new(params.require(:message).permit(:msg))
+					
+		m.sender =current_user
+		m.reciepient_id = params[:user_id]
+	
+		c = Conversation.where("(sender_id = ? AND reciepient_id = ?) OR (sender_id = ? AND reciepient_id = ?)",current_user.id,  params[:user_id], params[:user_id], current_user.id ).first
+		c = Conversation.create(sender_id: current_user.id, reciepient_id: params[:user_id]) if c.nil?		
+		m.conversation = c
+
+		m.save
+
+		redirect_to showconversation_path(c.id), notice: "Nachricht wurde verschickt"
 	end
 
 	def showconversation
+
 		@conversation = Conversation.find(params[:id])
 		@msgs = @conversation.messages.order('created_at desc').limit(30)
-		# Message.where(conversation_id: params[:id]).order('created_at desc').all
 		@message = Message.new
-
 	end
-
 end
