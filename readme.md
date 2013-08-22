@@ -5,7 +5,7 @@ Projekt:
 Team: 	Erich Ertmann
 	Thomas Flemmer
 
-Es soll ein kleines Socialnetwork erstellt werden. Der User soll die möglichkeit haben Freunde zu adden, Statusupdates zu verfassen und Profile von freunden einsehen zu können. Desweiteren soll jeder User eine eigene Pinnwand bekommen. Es soll möglich sein Beiträge von anderen Usern zu liken. Optional soll ein PN-System implementiert werden um Private Nachrichten austauschen zu können.
+Es soll ein kleines Socialnetwork erstellt werden. Der User soll die möglichkeit haben Freunde zu adden, Statusupdates zu verfassen und Profile von freunden einsehen zu können. Desweiteren soll jeder User eine eigene Pinnwand bekommen. Es soll möglich sein Beiträge von anderen Usern zu liken. Optional soll ein PN-System implementiert werden um Private Nachrichten austauschen zu können. Weitere Optionale Features sind, Avatare, eine Kommentarfunktion und die möglichkeit Freundschaftsanfragen abzulehnen oder anzunnehmen.
 
 
 
@@ -28,5 +28,8 @@ Neben-Features
 Optionale-Features
 
 	- PN System 
+	- Kommentare
+	- Avatare
+	- Freundschaftsanfragen  akzeptieren / ablehnen
 
 
