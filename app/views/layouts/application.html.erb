@@ -33,11 +33,11 @@
 		<% if user_signed_in? %>
 
 			<%=  current_user.firstname %> <%=  current_user.lastname %>   &nbsp
-			
+
 			<%= link_to "Dashboard",socialnetwork_path%> &nbsp |  &nbsp
 			<%= link_to "Profil", userprofile_path, method: :get %> | 	&nbsp
 			<%= link_to "Friends", friend_path %> &nbsp | &nbsp
-			<%= link_to "Messeges", destroy_user_session_path, method: :delete %> &nbsp | &nbsp
+			<%= link_to "Messeges", messages_path %> &nbsp | &nbsp
 			<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 		<%end%>
 	</div>

@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
 
 	def showconversation
 		@conversation = Conversation.find(params[:id])
-		@msgs = @conversation.messages.order('created_at desc')
+		@msgs = @conversation.messages.order('created_at desc').limit(30)
 		# Message.where(conversation_id: params[:id]).order('created_at desc').all
 		@message = Message.new
 

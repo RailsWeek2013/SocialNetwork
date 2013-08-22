@@ -1,10 +1,16 @@
-<h2>search</h2>
-
-<% if @user.empty? %>
-	<p>nichts gefunden </p>
-<% else %>
-	<% @user.each do |u| %> 
-		<%=  u.firstname %> <%=  u.lastname %> | 
-		<%= link_to "Add Friend", friendadd_path(:friend_id=>u.id) %><p>
+<h2>Suche</h2>
+<div class="friend_list">
+	<% if @user.empty? %>
+		<p>nichts gefunden </p>
+	<% else %>
+		<% @user.each do |u| %> 
+			<div class="friendlist_avatar">
+				<img src="<%= u.avatar.url %>">
+			</div>
+			<b><%=  u.firstname %> <%=  u.lastname %></b> <br> 
+			<%= link_to "Add Friend", friendadd_path(:friend_id=>u.id) %><p>
+			<br>
+			<hr>
+		<% end %>
 	<% end %>
-<% end %>
+</div>

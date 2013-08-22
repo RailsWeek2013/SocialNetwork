@@ -1,15 +1,14 @@
-<h2>Messages</h2>
+<h2>Unterhaltungen</h2>
 
 	<% @conversations.each do |c| %> 
 
 		<% if c.sender == current_user %>
-			<%= c.reciepient.firstname %>
+			<%= c.reciepient.firstname %> <%= c.sender.lastname %>
 			
 		<% else %> 
-			<%# debug c %> 
 
-			<%= c.sender.firstname %> 
+			<%= c.sender.firstname %> <%= c.sender.lastname %>
 		<% end %>
-		| <%= link_to "show", showconversation_path(c) %> 
+		| <%= link_to "anzeigen", showconversation_path(c) %> 
 		<hr>
 	<% end %>
