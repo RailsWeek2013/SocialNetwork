@@ -32,7 +32,7 @@ class FriendController < ApplicationController
 		redirect_to friendprofile_path(key: params[:friend_id]), notice: "Freund wurde hinzugefügt"
 	end
 
-		def frienddenie
+	def frienddenie
 
 		f = Friendship.where(user_id: params[:friend_id], friend_id: current_user.id ).first
 		f.destroy
@@ -41,8 +41,13 @@ class FriendController < ApplicationController
 	end
 
 	def frienddelete
+
+		c = Conversation.where("(sender_id = ? AND reciepient_id = ?) OR (sender_id = ? AND reciepient_id = ?)",current_user.id,  params[:friend_id], params[:friend_id], current_user.id ).first
+		m = Message.where(conversation_id: c.id)	
 		f = Friendship.where("user_id = ? AND friend_id = ? OR friend_id = ? AND user_id = ?",current_user , params[:friend_id],current_user, params[:friend_id]).first 
-			
+		
+		m.destroy_all
+		c.destroy
 	    f.destroy
 
 		redirect_to friend_path, notice: "Freund wurde erfolgreich gelöscht"
