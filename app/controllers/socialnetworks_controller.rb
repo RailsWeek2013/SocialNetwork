@@ -38,23 +38,17 @@ class SocialnetworksController < ApplicationController
 		l = Like.new
 		l.user = current_user
 		l.post_id = params[:p_id]
-
-		if l.save
-			redirect_to root_path, notice: "Du hast einen Beitrag geliked :-)"
-		else
-			redirect_to root_path, notice: "Es konnte NICHT geliked werden..."
-		end
-
-		
+		l.save
+		redirect_to root_path, notice: "Du hast einen Beitrag geliked :-)"
 	end
 
 	def deletepost
 
-		if Post.find(params[:p_id]).delete
-			redirect_to root_path, notice: "Post wurde gelöscht :-)"
-		else
-			redirect_to root_path, notice: "Es ist ein FEHLER aufgetreten..."
-		end
+		p = Post.find(params[:p_id])
+		p.likes.delete_all
+		p.comments.delete_all
+		Post.find(params[:p_id]).delete
+		redirect_to root_path, notice: "Post wurde gelöscht :-)"
 	end
 
 	def commentpost
@@ -79,14 +73,8 @@ class SocialnetworksController < ApplicationController
 	def deletecomment
 		
 		comment = Comment.find_by_id(params[:c_id])
-
-		if comment.destroy
-			redirect_to commentpost_path(params[:p_id]), notice: "Kommentar wurde entfernt"
-		else
-			redirect_to commentpost_path(params[:p_id]), notice: "Ein Fehler beim entfernen des Kommentars ist aufgetreten"
-		end
-
-		
+		comment.destroy
+		redirect_to commentpost_path(params[:p_id]), notice: "Kommentar wurde entfernt"
 	end
 
 	private
