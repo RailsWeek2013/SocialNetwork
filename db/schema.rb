@@ -92,6 +92,10 @@ ActiveRecord::Schema.define(version: 20130821092018) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.string   "avatar"
   end
 
