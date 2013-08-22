@@ -10,12 +10,12 @@ u1 = User.create(firstname: "hans", lastname: "Peter", email: "hans@peter.de", p
 u2 = User.create(firstname: "susi", lastname: "Peter", email: "susi@peter.de", password: "12345678", password_confirmation: "12345678")
 u3 = User.create(firstname: "michi", lastname: "Peter", email: "michi@peter.de", password: "12345678", password_confirmation: "12345678")
 
-u1.friends << u2
-u1.friends << u3
-u2.friends << u1
-u2.friends << u3
+#u1.friends << u2
+#u1.friends << u3
+#u2.friends << u1
+#u2.friends << u3
 
-c1=Conversation.create sender: u1, reciepient: u3
+#c1=Conversation.create sender: u1, reciepient: u3
 
-m1=Message.create conversation: c1, sender: u1, reciepient: u3, msg: "Hallo Michi!"
-m2=Message.create conversation: c1, sender: u3, reciepient: u1, msg: "Hallo Hans!"
+#m1=Message.create conversation: c1, sender: u1, reciepient: u3, msg: "Hallo Michi!"
+#m2=Message.create conversation: c1, sender: u3, reciepient: u1, msg: "Hallo Hans!"
