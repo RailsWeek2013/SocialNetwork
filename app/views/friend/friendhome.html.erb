@@ -15,8 +15,8 @@
 				<%=  nf.lastname %>
 			</td>
 			<td>
-			<p><%= link_to "accept", friendaccept_path(:friend_id=>nf.id) %> 
-				<%= link_to "denie", frienddenie_path(:friend_id=>nf.id) %> </p> 
+			<p><%= link_to "accept", friendaccept_path(nf.id) %> 
+				<%= link_to "denie", frienddenie_path(nf.id) %> </p> 
 			</td>
 		</tr>
 			
@@ -38,9 +38,9 @@
 				<img src="<%= f.avatar.url %>">
 			</div>
 			<br>
-			<b><%=  link_to "#{f.firstname} #{f.lastname}", friendprofile_path(:key=>f.id) %></b>
+			<b><%=  link_to "#{f.firstname} #{f.lastname}", friendprofile_path(f.id) %></b>
 			<br>
-			<%= link_to "delete friend", frienddelete_path(:friend_id=>f.id) %>
+			<%= link_to "delete friend", frienddelete_path(f.id) %>
 			<br>
 			<hr>
 

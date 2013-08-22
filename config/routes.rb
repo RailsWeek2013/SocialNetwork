@@ -17,11 +17,11 @@ Socialnetwork::Application.routes.draw do
   post 'createpost' => 'socialnetworks#createpost'
 
   get 'friend' => 'friend#friendhome'
-  get 'friendadd' => 'friend#friendadd'
-  get 'frienddelete' => 'friend#frienddelete'
-  get 'friendaccept' => 'friend#friendaccept'
-  get 'frienddenie' => 'friend#frienddenie'
-  get 'friendprofile' => 'friend#friendprofile'
+  get 'friendadd/:friend_id' => 'friend#friendadd', as: "friendadd"
+  get 'frienddelete/:friend_id' => 'friend#frienddelete', as: "frienddelete"
+  get 'friendaccept/:friend_id' => 'friend#friendaccept', as: "friendaccept"
+  get 'frienddenie/:friend_id' => 'friend#frienddenie', as: "frienddenie"
+  get 'friendprofile/:key' => 'friend#friendprofile', as: "friendprofile"
   get 'friendnewpin' => 'friend#friendnewpinentry'
   get 'frienddeletepin' => 'friend#frienddeletepinentry'
 

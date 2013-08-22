@@ -8,7 +8,7 @@
 				<img src="<%= u.avatar.url %>">
 			</div>
 			<b><%=  u.firstname %> <%=  u.lastname %></b> <br> 
-			<%= link_to "Add Friend", friendadd_path(:friend_id=>u.id) %><p>
+			<%= link_to "Add Friend", friendadd_path(u.id) %><p>
 			<br>
 			<hr>
 		<% end %>
