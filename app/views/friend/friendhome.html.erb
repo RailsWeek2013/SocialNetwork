@@ -38,6 +38,7 @@
 				<img src="<%= f.avatar.url %>">
 			</div>
 			<br>
+			<br>
 			<b><%=  link_to "#{f.firstname} #{f.lastname}", friendprofile_path(f.id) %></b>
 			<br>
 			<%= link_to "delete friend", frienddelete_path(f.id) %>

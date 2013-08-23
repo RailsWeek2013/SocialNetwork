@@ -68,7 +68,7 @@ class FriendController < ApplicationController
 
 	def frienddeletepinentry
 		
-		p = Pinboard.(params[:pin_id])
+		p = Pinboard.find(params[:pin_id])
 		p.destroy
 
 		redirect_to userprofile_path, notice: "Pinwandeintrag wurde erfolgreich gelöscht"

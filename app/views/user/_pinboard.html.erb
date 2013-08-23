@@ -4,6 +4,6 @@
 	<% @pins.each do |p| %> 
 		<b><%= p.user.firstname %> schreibt:</b><br>
 		<%=  p.entry %> 
-		<%= link_to "delete", frienddeletepin_path(:pin_id=>p.id) if isowner %><p>
+		<%= link_to "delete", frienddeletepin_path(p.id) if isowner %><p>
 		<hr>
 	<% end %>	

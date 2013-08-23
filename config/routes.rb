@@ -23,7 +23,7 @@ Socialnetwork::Application.routes.draw do
   get 'frienddenie/:friend_id' => 'friend#frienddenie', as: "frienddenie"
   get 'friendprofile/:key' => 'friend#friendprofile', as: "friendprofile"
   get 'friendnewpin' => 'friend#friendnewpinentry'
-  get 'frienddeletepin' => 'friend#frienddeletepinentry'
+  get 'frienddeletepin/:pin_id' => 'friend#frienddeletepinentry', as: "frienddeletepin"
 
   get 'userprofile' => 'user#userprofile'
   patch 'edituser' => 'user#edituser'
